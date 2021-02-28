@@ -1,4 +1,4 @@
-require("dotenv").config()
+// require("dotenv").config()
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
@@ -18,15 +18,9 @@ app.use(express.static("public"));
 
 console.log(process.env.MONGO_URI)
 
-const configDB="mongodb://localhost/budget";
-
-mongoose.connect(
-  process.env.MONGODB_URI || configDB, {
-  useNewUrlParser: true,
-  useFindAndModify: false,
-  useUnifiedTopology: true,
-  useCreateIndex: true
-}).then(() => console.log('connected to db'))
+mongoose.connect("mongodb://localhost/budget", {useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true, useCreateIndex: true}
+)
+.then(() => console.log('connected to db'))
 .catch(err=> console.error('an error has occured', err));
 
 // routes
